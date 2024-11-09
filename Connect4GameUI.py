@@ -66,9 +66,11 @@ class Connect4Game:
         self.prune = prune
         self.current_turn = random.choice([1, -1])
     
+    #
     def drop_piece(self, board, row, col, piece):
         board[row][col] = piece
 
+    #
     def get_next_open_row(self, board,col):
         for r in range(ROW_COUNT):
             if board[r][col] == 0:
@@ -147,9 +149,11 @@ class Connect4Game:
     
         return score
     
+    #
     def is_terminal_node(self, board):
         return self.winning_move(board, PLAYER_PIECE) or self.winning_move(board, CPU_PIECE) or len(self.get_valid_locations(board)) == 0
     
+    #
     def get_valid_locations(self, board):
         valid_locations = []
         for col in range(COLUMN_COUNT):
@@ -170,6 +174,7 @@ class Connect4Game:
                 move = col
         return move
     
+    #
     def heuristic(self, board, piece):
         if(self.is_terminal_node(board)):
             if self.winning_move(board, piece):
